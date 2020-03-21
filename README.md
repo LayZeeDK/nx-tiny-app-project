@@ -14,7 +14,7 @@
   }
 }
 ```
-3. `npx rimraf ./libs/shared/assets/*.js ./libs/shared/assets/*.json ./libs/shared/assets/src/*.* ./libs/shared/assets/src/lib`
+3. `npx rimraf ./apps/tiny-app/src/assets ./libs/shared/assets/*.js ./libs/shared/assets/*.json ./libs/shared/assets/src/*.* ./libs/shared/assets/src/lib`
 4. `"# shared-assets" > ./libs/shared/assets/README.md`
 5. `npx mkdirp ./libs/shared/assets/src/assets/fonts ./libs/shared/assets/src/assets/icons ./libs/shared/assets/src/assets/images`
 6.
