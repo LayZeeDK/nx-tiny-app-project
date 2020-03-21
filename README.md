@@ -1,84 +1,125 @@
-# Workspace
+# Tiny Angular application project in an Nx workspace.
+1. `npx create-nx-workspace workspace --cli=angular --preset=angular --appName=tiny-app --style=scss`
+2. `ng update @angular/cli @angular/core`
 
-This project was generated using [Nx](https://nx.dev).
+## Assets workspace library
+1. `ng generate library assets --directory=shared --tags="scope:shared,type:assets" --style=scss`
+2. Remove the architect targets (`lint` and `test`) of the `shared-assets` project in `angular.json`:
+```json
+{
+  "projects": {
+    "shared-assets": {
+      "architect": {}
+    }
+  }
+}
+```
+3. `npx rimraf ./libs/shared/assets/*.js ./libs/shared/assets/*.json ./libs/shared/assets/src/*.* ./libs/shared/assets/src/lib`
+4. `"# shared-assets" > ./libs/shared/assets/README.md`
+5. `npx mkdirp ./libs/shared/assets/src/assets/fonts ./libs/shared/assets/src/assets/icons ./libs/shared/assets/src/assets/images`
+6.
+```bash
+"" > ./libs/shared/assets/src/assets/fonts/.gitkeep
+"" > ./libs/shared/assets/src/assets/icons/.gitkeep
+"" > ./libs/shared/assets/src/assets/images/.gitkeep
+```
+7. `mv ./apps/tiny-app/src/favicon.ico ./libs/shared/assets/src`
+8. `npx rimraf ./apps/tiny-app/src/assets`
+9. In the `build` architect target of the `tiny-app` project in `angular.json`, replace the `assets` option with these two entries:
+```json
+{
+  "projects": {
+    "tiny-app": {
+      "architect": {
+        "build": {
+          "options": {
+            "assets": [
+              {
+                "glob": "favicon.ico",
+                "input": "libs/shared/assets/src",
+                "output": ""
+              },
+              {
+                "glob": "**/*",
+                "input": "libs/shared/assets/src/assets",
+                "output": "assets"
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}
+```
+10. `npx -p wget-improved nwget https://nx.dev/assets/images/nx-logo-white.svg -O .\libs\shared\assets\src\assets\images\nx-logo-white.svg`
+11. In `app.component.html`, replace the `src` attribute of the logo image element with `"/assets/images/nx-logo-white.svg"`.
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png" width="450"></p>
+## Styles workspace library
+1. `ng generate library styles --directory=shared --tags="scope:shared,type:styles" --style=scss`
+2. Remove the architect targets (`lint` and `test`) of the `shared-styles` project in `angular.json`:
+```json
+{
+  "projects": {
+    "shared-styles": {
+      "architect": {}
+    }
+  }
+}
+```
+3. `npx rimraf ./libs/shared/styles/*.js ./libs/shared/styles/*.json ./libs/shared/styles/src/*.* ./libs/shared/styles/src/lib/*.*`
+4. `"# shared-styles" > ./libs/shared/styles/README.md`
+5. `mv ./apps/tiny-app/src/styles.scss ./libs/shared/styles/src/lib/_global.scss`
+6. `"@import './lib/global';" > ./libs/shared/styles/src/index.scss`
+7. In the `build` architect target of the `tiny-app` project in `angular.json`, replace the `styles` option with this entry:
+```json
+{
+  "projects": {
+    "tiny-app": {
+      "architect": {
+        "build": {
+          "options": {
+            "styles": [
+              "libs/shared/styles/src/index.scss"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
+```
 
-🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
-
-## Quick Start & Documentation
-
-[Nx Documentation](https://nx.dev/angular)
-
-[10-minute video showing all Nx features](https://nx.dev/angular/getting-started/what-is-nx)
-
-[Interactive Tutorial](https://nx.dev/angular/tutorial/01-create-application)
-
-## Adding capabilities to your workspace
-
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
-
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
-
-Below are some plugins which you can add to your workspace:
-
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
-
-## Generate an application
-
-Run `ng g @nrwl/angular:app my-app` to generate an application.
-
-> You can use any of the plugins above to generate applications as well.
-
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are sharable across libraries and applications. They can be imported from `@workspace/mylib`.
-
-## Development server
-
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
+## Environments workspace library
+1. `ng generate library environments --directory=shared --tags="scope:shared,type:environments" --style=scss`
+2. `npx rimraf ./libs/shared/environments/src/lib/*.*`
+3. `mv ./apps/tiny-app/src/environments/*.* ./libs/shared/environments/src/lib`
+4. `"export * from './lib/environment';" > ./libs/shared/environments/src/index.ts`
+5. `npx rimraf ./apps/tiny-app/src/environments`
+6. In the `build` architect target of the `tiny-app` project in `angular.json`, replace the `fileReplacements` option in the `production` configuration with this entry:
+```json
+{
+  "projects": {
+    "tiny-app": {
+      "architect": {
+        "build": {
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "libs/shared/environments/src/lib/environment.ts",
+                  "with": "libs/shared/environments/src/lib/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+7. In `main.ts`, replace the environment import statement with the following:
+```typescript
+import { environment } from '@workspace/shared/environments';
+```
