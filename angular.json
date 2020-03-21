@@ -29,7 +29,7 @@
                 "output": "assets"
               }
             ],
-            "styles": ["apps/tiny-app/src/styles.css"],
+            "styles": ["apps/tiny-app/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
