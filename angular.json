@@ -135,6 +135,34 @@
       "prefix": "nx-tiny-app-project",
       "architect": {},
       "schematics": {}
+    },
+    "shared-styles": {
+      "projectType": "library",
+      "root": "libs/shared/styles",
+      "sourceRoot": "libs/shared/styles/src",
+      "prefix": "nx-tiny-app-project",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/styles/tsconfig.lib.json",
+              "libs/shared/styles/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/styles/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/styles/jest.config.js",
+            "tsConfig": "libs/shared/styles/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/styles/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {
@@ -144,6 +172,9 @@
     "@nrwl/angular:application": {
       "unitTestRunner": "jest",
       "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:component": {
+      "styleext": "scss"
     },
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"
