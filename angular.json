@@ -1,0 +1,137 @@
+{
+  "version": 1,
+  "projects": {
+    "tiny-app": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/tiny-app",
+      "sourceRoot": "apps/tiny-app/src",
+      "prefix": "nx-tiny-app-project",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/tiny-app",
+            "index": "apps/tiny-app/src/index.html",
+            "main": "apps/tiny-app/src/main.ts",
+            "polyfills": "apps/tiny-app/src/polyfills.ts",
+            "tsConfig": "apps/tiny-app/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/tiny-app/src/favicon.ico",
+              "apps/tiny-app/src/assets"
+            ],
+            "styles": ["apps/tiny-app/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/tiny-app/src/environments/environment.ts",
+                  "with": "apps/tiny-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "tiny-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "tiny-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "tiny-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/tiny-app/tsconfig.app.json",
+              "apps/tiny-app/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/tiny-app/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/tiny-app/jest.config.js",
+            "tsConfig": "apps/tiny-app/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/tiny-app/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "tiny-app-e2e": {
+      "root": "apps/tiny-app-e2e",
+      "sourceRoot": "apps/tiny-app-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/tiny-app-e2e/cypress.json",
+            "tsConfig": "apps/tiny-app-e2e/tsconfig.e2e.json",
+            "devServerTarget": "tiny-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "tiny-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/tiny-app-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/tiny-app-e2e/**"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "tiny-app"
+}

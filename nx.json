@@ -1,0 +1,22 @@
+{
+  "npmScope": "nx-tiny-app-project",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "tiny-app": {
+      "tags": []
+    },
+    "tiny-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["tiny-app"]
+    }
+  }
+}
