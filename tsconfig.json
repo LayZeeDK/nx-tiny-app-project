@@ -17,7 +17,10 @@
     "baseUrl": ".",
     "paths": {
       "@nx-tiny-app-project/shared/assets": ["libs/shared/assets/src/index.ts"],
-      "@nx-tiny-app-project/shared/styles": ["libs/shared/styles/src/index.ts"]
+      "@nx-tiny-app-project/shared/styles": ["libs/shared/styles/src/index.ts"],
+      "@nx-tiny-app-project/shared/environments": [
+        "libs/shared/environments/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
