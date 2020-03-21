@@ -125,7 +125,7 @@ import { environment } from '@workspace/shared/environments';
 ```
 
 ## Configure Nx workspace
-1. Add these two `implicitDependencies` entries to the `tiny-app` project` in `nx.json`:
+1. Add these two `implicitDependencies` entries to the `tiny-app` project in `nx.json`:
 ```json
 {
   "projects": {
