@@ -24,8 +24,7 @@
 "" > ./libs/shared/assets/src/assets/images/.gitkeep
 ```
 7. `mv ./apps/tiny-app/src/favicon.ico ./libs/shared/assets/src`
-8. `npx rimraf ./apps/tiny-app/src/assets`
-9. In the `build` architect target of the `tiny-app` project in `angular.json`, replace the `assets` option with these two entries:
+8. In the `build` architect target of the `tiny-app` project in `angular.json`, replace the `assets` option with these two entries:
 ```json
 {
   "projects": {
@@ -52,8 +51,8 @@
   }
 }
 ```
-10. `npx -p wget-improved nwget https://nx.dev/assets/images/nx-logo-white.svg -O .\libs\shared\assets\src\assets\images\nx-logo-white.svg`
-11. In `app.component.html`, replace the `src` attribute of the logo image element with `"/assets/images/nx-logo-white.svg"`.
+9. `npx -p wget-improved nwget https://nx.dev/assets/images/nx-logo-white.svg -O .\libs\shared\assets\src\assets\images\nx-logo-white.svg`
+10. In `app.component.html`, replace the `src` attribute of the logo image element with `"/assets/images/nx-logo-white.svg"`.
 
 ## Styles workspace library
 1. `ng generate library styles --directory=shared --tags="scope:shared,type:styles" --style=scss`
