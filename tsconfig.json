@@ -15,7 +15,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nx-tiny-app-project/shared/assets": ["libs/shared/assets/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

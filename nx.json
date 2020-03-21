@@ -17,6 +17,9 @@
     "tiny-app-e2e": {
       "tags": [],
       "implicitDependencies": ["tiny-app"]
+    },
+    "shared-assets": {
+      "tags": ["scope:shared", "type:assets"]
     }
   }
 }
