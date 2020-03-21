@@ -18,8 +18,16 @@
             "tsConfig": "apps/tiny-app/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "apps/tiny-app/src/favicon.ico",
-              "apps/tiny-app/src/assets"
+              {
+                "glob": "favicon.ico",
+                "input": "libs/shared/assets/src",
+                "output": ""
+              },
+              {
+                "glob": "**/*",
+                "input": "libs/shared/assets/src/assets",
+                "output": "assets"
+              }
             ],
             "styles": ["apps/tiny-app/src/styles.css"],
             "scripts": []
