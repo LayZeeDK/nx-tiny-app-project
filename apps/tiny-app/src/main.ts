@@ -1,6 +1,6 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { environment } from '@nx-tiny-app-project/shared/environments';
+import { environment } from '@workspace/shared/environments';
 
 import { AppModule } from './app/app.module';
 

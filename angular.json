@@ -6,7 +6,7 @@
       "schematics": {},
       "root": "apps/tiny-app",
       "sourceRoot": "apps/tiny-app/src",
-      "prefix": "nx-tiny-app-project",
+      "prefix": "workspace",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -132,7 +132,7 @@
       "projectType": "library",
       "root": "libs/shared/assets",
       "sourceRoot": "libs/shared/assets/src",
-      "prefix": "nx-tiny-app-project",
+      "prefix": "workspace",
       "architect": {},
       "schematics": {}
     },
@@ -140,7 +140,7 @@
       "projectType": "library",
       "root": "libs/shared/styles",
       "sourceRoot": "libs/shared/styles/src",
-      "prefix": "nx-tiny-app-project",
+      "prefix": "workspace",
       "architect": {},
       "schematics": {}
     },
@@ -148,7 +148,7 @@
       "projectType": "library",
       "root": "libs/shared/environments",
       "sourceRoot": "libs/shared/environments/src",
-      "prefix": "nx-tiny-app-project",
+      "prefix": "workspace",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",

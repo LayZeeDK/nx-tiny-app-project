@@ -1,5 +1,5 @@
 {
-  "npmScope": "nx-tiny-app-project",
+  "npmScope": "workspace",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": {

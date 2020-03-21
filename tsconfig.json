@@ -16,9 +16,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-tiny-app-project/shared/assets": ["libs/shared/assets/src/index.ts"],
-      "@nx-tiny-app-project/shared/styles": ["libs/shared/styles/src/index.ts"],
-      "@nx-tiny-app-project/shared/environments": [
+      "@workspace/shared/assets": ["libs/shared/assets/src/index.ts"],
+      "@workspace/shared/styles": ["libs/shared/styles/src/index.ts"],
+      "@workspace/shared/environments": [
         "libs/shared/environments/src/index.ts"
       ]
     }
