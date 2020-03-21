@@ -12,7 +12,8 @@
   },
   "projects": {
     "tiny-app": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": ["shared-assets", "shared-styles"]
     },
     "tiny-app-e2e": {
       "tags": [],
