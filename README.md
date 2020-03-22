@@ -1,9 +1,9 @@
 # Tiny Angular application project in an Nx workspace.
 1. `npx create-nx-workspace workspace --cli=angular --preset=angular --appName=tiny-app --style=scss`
-2. `ng update @angular/cli @angular/core`
+2. `nx update @angular/cli @angular/core`
 
 ## Assets workspace library
-1. `ng generate library assets --directory=shared --tags="scope:shared,type:assets" --style=scss`
+1. `nx generate library assets --directory=shared --tags="scope:shared,type:assets" --style=scss`
 2. Remove the architect targets (`lint` and `test`) of the `shared-assets` project in `angular.json`:
 ```json
 {
@@ -55,7 +55,7 @@
 10. In `app.component.html`, replace the `src` attribute of the logo image element with `"/assets/images/nx-logo-white.svg"`.
 
 ## Styles workspace library
-1. `ng generate library styles --directory=shared --tags="scope:shared,type:styles" --style=scss`
+1. `nx generate library styles --directory=shared --tags="scope:shared,type:styles" --style=scss`
 2. Remove the architect targets (`lint` and `test`) of the `shared-styles` project in `angular.json`:
 ```json
 {
@@ -90,7 +90,7 @@
 ```
 
 ## Environments workspace library
-1. `ng generate library environments --directory=shared --tags="scope:shared,type:environments" --style=scss`
+1. `nx generate library environments --directory=shared --tags="scope:shared,type:environments" --style=scss`
 2. `npx rimraf ./libs/shared/environments/src/lib/*.*`
 3. `mv ./apps/tiny-app/src/environments/*.* ./libs/shared/environments/src/lib`
 4. `"export * from './lib/environment';" > ./libs/shared/environments/src/index.ts`
