@@ -27,6 +27,9 @@
     },
     "shared-environments": {
       "tags": ["scope:shared", "type:environments"]
+    },
+    "shared-data-access": {
+      "tags": ["scope:shared", "type:data-access"]
     }
   }
 }

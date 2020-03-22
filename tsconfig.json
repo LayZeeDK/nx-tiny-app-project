@@ -20,7 +20,8 @@
       "@workspace/shared/styles": ["libs/shared/styles/src/index.ts"],
       "@workspace/shared/environments": [
         "libs/shared/environments/src/index.ts"
-      ]
+      ],
+      "@workspace/shared/data-access": ["libs/shared/data-access/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
