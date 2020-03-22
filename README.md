@@ -51,7 +51,7 @@
   }
 }
 ```
-9. `npx -p wget-improved nwget https://nx.dev/assets/images/nx-logo-white.svg -O .\libs\shared\assets\src\assets\images\nx-logo-white.svg`
+9. `npx -p wget-improved nwget https://nx.dev/assets/images/nx-logo-white.svg -O ./libs/shared/assets/src/assets/images/nx-logo-white.svg`
 10. In `app.component.html`, replace the `src` attribute of the logo image element with `"/assets/images/nx-logo-white.svg"`.
 
 ## Styles workspace library
